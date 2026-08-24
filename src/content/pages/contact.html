@@ -1,0 +1,193 @@
+---
+title: "Get Your Free Media Audit | Deep Sea Digital"
+description: "Ready to scale your business with cinema-grade visuals and a high-performance website? Contact us at Deep Sea Digital today."
+permalink: "/contact/"
+---
+
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/contact.css">
+    <style>
+        /* Forces the SMS opt-in to span the full width of the form grid */
+        .opt-in-wrapper {
+            grid-column: 1 / -1 !important;
+            width: 100% !important;
+            max-width: none !important;
+            margin-top: -0.75rem !important; 
+            margin-bottom: 1.5rem !important;
+        }
+
+        /* Overrides the default vertical stacking of CodeStitch form labels */
+        .opt-in-label {
+            display: flex !important;
+            flex-direction: row !important; 
+            align-items: flex-start !important;
+            gap: 0.75rem !important;
+            font-size: 0.85rem !important;
+            color: #b4b4b4 !important;
+            line-height: 1.5 !important;
+            cursor: pointer !important;
+            width: 100% !important;
+            max-width: none !important;
+            text-align: left !important;
+        }
+
+        /* Forces the text itself to stretch out and fill the container on desktop */
+        .opt-in-label span {
+            flex: 1 !important;
+            width: 100% !important;
+            max-width: none !important;
+        }
+
+        /* Prevents the checkbox from resizing or misaligning */
+        .opt-in-label input[type="checkbox"] {
+            width: 18px !important;
+            height: 18px !important;
+            margin: 2px 0 0 0 !important;
+            flex-shrink: 0 !important;
+            accent-color: var(--primary) !important;
+        }
+
+        /* Submission Status Messages */
+        #form-status {
+            margin-top: 1rem;
+            font-weight: 700;
+            text-align: center;
+            display: none;
+        }
+        .status-success { color: #10b981; } /* Green */
+        .status-error { color: #ef4444; }   /* Red */
+    </style>
+{% endblock %}
+
+{% block body %}
+
+    <div id="banner-310">
+        <div class="cs-container">
+            <span class="cs-int-title">Start the Revolution</span>
+            <div class="cs-breadcrumbs">
+                <a href="/" class="cs-link">Home</a>
+                <a href="/contact/" class="cs-link cs-active">Contact Us</a>
+            </div>
+        </div>
+        <picture class="cs-background">
+            <img src="/assets/images/ocfloor.webp" alt="Deep Sea" width="1920" height="482" loading="eager" decoding="async">
+        </picture>
+    </div>
+
+    <section id="cs-contact-265">
+        <div class="cs-container">
+            <div class="cs-left-section">
+                <div class="cs-content">
+                    <span class="cs-topper">Contact Us</span>
+                    <h2 class="cs-title">Secure Your Spot</h2>
+                    <p class="cs-text">
+                        We only take on a limited number of clients per month to ensure every site gets the premium video production attention it deserves. Tell us about your business, and we'll reach out to schedule your free 4K media audit.
+                    </p>
+                </div>
+
+                <!-- Native Cloudflare Pages Form -->
+                <form id="cs-form-265">
+                    
+                    <label>
+                        Name
+                        <input required type="text" id="name-265" name="name" placeholder="Full Name">
+                    </label>
+                    <label>
+                        Email
+                        <input required type="email" id="email-265" name="email" placeholder="Email Address">
+                    </label>
+                    <label>
+                        Phone
+                        <input required type="tel" id="phone-265" name="phone" placeholder="Phone Number">
+                    </label>
+                    <label>
+                        Business Type
+                        <input type="text" id="find-265" name="business-type" placeholder="e.g. Restaurant, Automotive, Real Estate">
+                    </label>
+                    <label class="cs-label-message">
+                        What is your main goal? (More leads, better branding, etc.)
+                        <textarea required name="message" id="message-265" placeholder="Tell us about your project..."></textarea>
+                    </label>
+                    
+                    <!-- SMS Opt-In Checkbox -->
+                    <div class="opt-in-wrapper">
+                        <label class="opt-in-label">
+                            <input type="checkbox" name="SMS_Opt_In" required>
+                            <span>I agree to receive SMS communications from Deep Sea Digital regarding my inquiry. I understand I can reply STOP to opt out at any time. Message and data rates may apply.</span>
+                        </label>
+                    </div>
+
+                    <button class="cs-button-solid cs-submit" type="submit" id="submit-btn">Submit My Request</button>
+                    <div id="form-status"></div>
+                </form>
+            </div>
+
+            <div class="cs-right-section">
+                <span class="cs-header">Email</span>
+                <a class="cs-link" href="mailto:{{ client.email }}">{{ client.email }}</a>
+                
+                <span class="cs-header">Text or Call</span>
+                <a class="cs-link" href="tel:{{ client.phoneForTel }}">{{ client.phoneFormatted }}</a>
+                
+                <span class="cs-header">Based In</span>
+                <p class="cs-link">
+                    Chino, California <br>
+                    Serving Chino & Beyond
+                </p>
+                
+                <picture class="cs-bg-picture">
+                    <img src="/assets/images/1234421.webp" alt="Professional Cinema Gear" width="542" height="578" decoding="async">
+                </picture>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cloudflare Form Submission Logic -->
+    <script>
+        document.getElementById('cs-form-265').addEventListener('submit', async function(e) {
+            e.preventDefault(); // Stop the default form submission
+
+            const form = e.target;
+            const submitBtn = document.getElementById('submit-btn');
+            const statusDiv = document.getElementById('form-status');
+            
+            // UI Feedback
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            statusDiv.style.display = 'none';
+            statusDiv.className = '';
+
+            // Package the data
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+
+            try {
+                // Send the data to our Cloudflare Function endpoint
+                const response = await fetch('/api/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    statusDiv.textContent = 'Message sent successfully! We will be in touch shortly.';
+                    statusDiv.classList.add('status-success');
+                    form.reset(); // Clear the form
+                } else {
+                    throw new Error('Network response was not ok.');
+                }
+            } catch (error) {
+                console.error('Submission failed:', error);
+                statusDiv.textContent = 'Oops! Something went wrong. Please try emailing us directly.';
+                statusDiv.classList.add('status-error');
+            } finally {
+                // Reset button UI
+                statusDiv.style.display = 'block';
+                submitBtn.textContent = 'Submit My Request';
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
+{% endblock %}

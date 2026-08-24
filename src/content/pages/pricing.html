@@ -1,0 +1,360 @@
+---
+title: "Pricing Plans | Deep Sea Digital"
+description: "High performance web design and cinema grade media pricing for Southern California businesses."
+permalink: "/pricing/"
+---
+
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/local.css">
+    <style>
+        #pricing-page {
+            padding: var(--sectionPadding);
+            background-color: var(--bodyTextColorWhite); 
+            transition: background-color 0.3s;
+        }
+        body.dark-mode #pricing-page {
+            background-color: var(--dark);
+        }
+
+        .pricing-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            width: 100%;
+        }
+
+        .price-card {
+            background: #fff;
+            padding: 3rem 2rem;
+            border-radius: 1rem;
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #eef;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        body.dark-mode .price-card {
+            background: var(--medium);
+            border-color: var(--accent);
+            box-shadow: none;
+        }
+
+        .price-card.featured {
+            border: 2px solid var(--primary);
+            transform: scale(1.05);
+            position: relative;
+            z-index: 2;
+        }
+
+        .badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+        }
+
+        .price-name { 
+            font-weight: 900; 
+            font-size: 1.5rem; 
+            color: var(--headerColor); 
+            margin-bottom: 0.5rem; 
+        }
+        body.dark-mode .price-name { color: #ffffff; }
+
+        /* Created a new class to fix the grey text bug */
+        .price-desc {
+            font-size: 0.875rem;
+            color: var(--bodyTextColor);
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+        body.dark-mode .price-desc { color: #ffffff; }
+
+        .price-amount { 
+            font-size: 3.5rem; 
+            font-weight: 900; 
+            color: var(--primary); 
+            line-height: 1;
+            margin-bottom: 0.25rem; 
+        }
+        .price-amount span { 
+            font-size: 1rem; 
+            color: var(--bodyTextColor); 
+            font-weight: 700; 
+            text-transform: uppercase;
+        }
+        body.dark-mode .price-amount span { color: #ffffff; opacity: 0.9; }
+
+        .setup-fee {
+            font-size: 1.125rem;
+            font-weight: 800;
+            color: var(--headerColor);
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eef;
+        }
+        body.dark-mode .setup-fee { color: #ffffff; border-color: rgba(255,255,255,0.2); }
+
+        .price-list { list-style: none; padding: 0; margin: 0 0 2rem 0; flex-grow: 1; text-align: left; }
+        .price-list li { margin-bottom: 1rem; color: var(--bodyTextColor); display: flex; align-items: flex-start; gap: 0.75rem; line-height: 1.4; font-weight: 500;}
+        body.dark-mode .price-list li { color: #ffffff; }
+        .price-list li::before { content: '✓'; color: var(--primary); font-weight: 900; }
+        
+        .price-list li.highlight { font-weight: 800; color: var(--headerColor); }
+        body.dark-mode .price-list li.highlight { color: #ffffff; }
+
+        /* Add On Styling */
+        .add-on-card {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 1rem;
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+            text-align: left;
+            border: 1px solid #eef;
+            transition: background 0.3s;
+        }
+        body.dark-mode .add-on-card {
+            background: var(--medium);
+            border-color: var(--accent);
+            color: #ffffff;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<section id="pricing-page">
+    <div class="cs-container" style="max-width: 1280px; margin: 3rem auto; display: flex; flex-direction: column; align-items: center; text-align: center;">
+        
+        <!-- Simplified Header -->
+        <span class="cs-topper" style="color: var(--primary); display: block; font-weight: 800; margin-bottom: 1rem;">Pricing</span>
+        <h1 class="cs-title" style="margin-left: auto; margin-right: auto; text-align: center; max-width: 100%;">Choose Your Package</h1>
+        
+        <div class="pricing-grid">
+            
+            <!-- Tier 1: Digital Foundation -->
+            <div class="price-card">
+                <span class="price-name">Digital Foundation</span>
+                <p class="price-desc">For local businesses ready to upgrade their digital presence.</p>
+                <div class="price-amount">$197<span> /mo</span></div>
+                <div class="setup-fee">+$500 Upfront Setup</div>
+                <ul class="price-list">
+                    <li class="highlight">Unlimited Minor Edits Included</li>
+                    <li>Custom 5 Page Hand Coded Website</li>
+                    <li>Sub Second Load Speeds Guarantee</li>
+                    <li>Premium Secure Hosting Included</li>
+                    <li>On Page Local SEO Optimization</li>
+                    <li>$100 Fee Per Additional Page</li>
+                </ul>
+                <a href="/contact/" class="cs-button-outline">Get Started</a>
+            </div>
+
+            <!-- Tier 2: Cinema Brand -->
+            <div class="price-card featured">
+                <div class="badge">The Growth Package</div>
+                <span class="price-name">Cinema Brand</span>
+                <p class="price-desc">The ultimate authority build. We shoot your media and engineer the site.</p>
+                <div class="price-amount">$2,999<span> Upfront</span></div>
+                <div class="setup-fee">+$150/mo Managed Hosting (Optional)</div>
+                <ul class="price-list">
+                    <li class="highlight">Half Day 4K Media Shoot Included</li>
+                    <li class="highlight">60 Second Cinematic Promo Video</li>
+                    <li>High Res Professional Production Stills</li>
+                    <li>Complete Website Code Ownership</li>
+                    <li>Integrated Booking / Contact Systems</li>
+                    <li>Advanced Google Business Profile Sync</li>
+                </ul>
+                <a href="/contact/" class="cs-button-solid">Book Production</a>
+            </div>
+
+            <!-- Tier 3: Enterprise -->
+            <div class="price-card">
+                <span class="price-name">Enterprise Architecture</span>
+                <p class="price-desc">For massive scale, serverless migrations, and advanced automation.</p>
+                <div class="price-amount">Custom<span> Pricing</span></div>
+                <div class="setup-fee">Built for Scale</div>
+                <ul class="price-list">
+                    <li class="highlight">Serverless Framework Migrations</li>
+                    <li>Custom API Data Scrapers (Spotify, etc.)</li>
+                    <li>Automated GitHub Action Pipelines</li>
+                    <li>Cloudflare Edge Deployment</li>
+                    <li>Headless CMS Architecture Integration</li>
+                    <li>Dedicated Technical Support SLA</li>
+                </ul>
+                <a href="/portfolio/del-records/" class="cs-button-outline">View Case Study</a>
+            </div>
+            
+        </div>
+
+        <div class="add-ons" style="margin-top: 5rem; width: 100%;">
+            <h2 class="cs-title" style="margin-left: auto; margin-right: auto; text-align: center; margin-bottom: 2rem;">Agency Add Ons</h2>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;">
+                <div class="add-on-card">
+                    <h3 style="color: var(--primary); font-weight: 800; font-size: 1.25rem;">Standalone Media Production</h3>
+                    <p style="margin-top: 0.5rem; line-height: 1.5;">Book a 4K video production day for a content refresh, automotive rolling shots, or special event coverage.</p>
+                    <span style="display: block; margin-top: 1rem; font-weight: 900; font-size: 1.25rem;">$500 / half day</span>
+                </div>
+                <div class="add-on-card">
+                    <h3 style="color: var(--primary); font-weight: 800; font-size: 1.25rem;">5 Star Review Funnel</h3>
+                    <p style="margin-top: 0.5rem; line-height: 1.5;">Turn happy customers into 5 star reviews on autopilot. We build a funnel to filter bad reviews and drive Google trust.</p>
+                    <span style="display: block; margin-top: 1rem; font-weight: 900; font-size: 1.25rem;">$49 / month</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================ -->
+<!--              UNIVERSAL SPACER                -->
+<!-- ============================================ -->
+<div style="margin-top: -5rem; margin-bottom: 0rem; position: relative; z-index: 10;">
+</div>
+
+<!-- ============================================ -->
+<!--                    FAQ                       -->
+<!-- ============================================ -->
+<section id="faq-1237">
+    <div class="cs-container">
+        <div class="cs-content">
+            <span class="cs-topper">FAQ</span>
+            <h2 class="cs-title">Frequently Asked Questions</h2>
+        </div>
+        <div class="cs-wrapper">
+            <ul class="cs-faq-group">
+                <li class="cs-faq-item">
+                    <button class="cs-button">
+                        <span class="cs-number">1</span>
+                        <span class="cs-button-text">
+                            Is there a contract for the monthly plans?
+                        </span>
+                    </button>
+                    <p class="cs-item-p">
+                        The Digital Foundation package ($197/mo) requires a minimum 6 month commitment to ensure we establish a solid SEO baseline and cover early infrastructure costs. After 6 months, it transitions to month to month. The Cinema Brand and Enterprise tiers carry no long term hosting contracts.
+                    </p>
+                </li>
+                <li class="cs-faq-item">
+                    <button class="cs-button">
+                        <span class="cs-number">2</span>
+                        <span class="cs-button-text">
+                            What is the difference between Foundation and Cinema Brand?
+                        </span>
+                    </button>
+                    <p class="cs-item-p">
+                        The Foundation model ($500 setup) provides an elite, hand coded website where we handle all ongoing text and photo edits for you via the $197 monthly fee. The Cinema Brand ($2,999 setup) is a massive growth injection: we come to your location, shoot a 4K commercial and professional photos, build the site, and transfer full code ownership to you upon launch.
+                    </p>
+                </li>
+                <li class="cs-faq-item">
+                    <button class="cs-button">
+                        <span class="cs-number">3</span>
+                        <span class="cs-button-text">
+                            Who owns the website code?
+                        </span>
+                    </button>
+                    <p class="cs-item-p">
+                        For the Digital Foundation package, Deep Sea Digital retains ownership of the codebase as part of the low upfront subscription model (though you can buy the code out anytime). For Cinema Brand and Enterprise builds, you own the website code 100% from day one. You are free to take the code and host it anywhere you like if you decide to manage it yourself.
+                    </p>
+                </li>
+                <li class="cs-faq-item">
+                    <button class="cs-button">
+                        <span class="cs-number">4</span>
+                        <span class="cs-button-text">
+                            What is your Lighthouse Speed Guarantee?
+                        </span>
+                    </button>
+                    <p class="cs-item-p">
+                        We guarantee a Google PageSpeed / Lighthouse Performance Score of 90 or above on mobile for all our websites. If your site falls below this threshold, we optimize the architecture until it passes. This ensures your website delivers a lightning fast user experience to retain visitors and instantly improve organic SEO.
+                    </p>
+                </li>
+                <li class="cs-faq-item">
+                    <button class="cs-button">
+                        <span class="cs-number">5</span>
+                        <span class="cs-button-text">
+                            Do you use Wix, WordPress, or page builders?
+                        </span>
+                    </button>
+                    <p class="cs-item-p">
+                        Absolutely not. We hand code our websites from scratch using raw HTML, CSS, JavaScript, and Serverless frameworks like Eleventy. Page builders are bloated, slow, and prone to security hacks. Hand coding allows us to create unhackable, custom digital experiences optimized for raw speed and scalability.
+                    </p>
+                </li>
+            </ul>
+            <ul class="cs-faq-group">
+                <li class="cs-faq-item">
+                    <button class="cs-button">
+                        <span class="cs-number">6</span>
+                        <span class="cs-button-text">
+                            Where do you film the Cinema Package media?
+                        </span>
+                    </button>
+                    <p class="cs-item-p">
+                        Media production requires an on location shoot. We currently serve businesses across Southern California, operating directly out of Chino Hills. We will bring our cinema cameras, lighting, and audio gear directly to your shop, office, or job site to capture authentic commercial media.
+                    </p>
+                </li>
+                <li class="cs-faq-item">
+                    <button class="cs-button">
+                        <span class="cs-number">7</span>
+                        <span class="cs-button-text">
+                            Is my website secure against hackers?
+                        </span>
+                    </button>
+                    <p class="cs-item-p">
+                        Yes. 90% of website attacks exploit vulnerabilities in third party plugins used on platforms like WordPress. Because we hand code our sites and serve them via secure Edge Content Delivery Networks like Cloudflare, there are no databases or plugins to hack. We virtually eliminate the risk of exploits.
+                    </p>
+                </li>
+                <li class="cs-faq-item">
+                    <button class="cs-button">
+                        <span class="cs-number">8</span>
+                        <span class="cs-button-text">
+                            How long until my website is ready?
+                        </span>
+                    </button>
+                    <p class="cs-item-p">
+                        A Digital Foundation website typically launches in under 2 weeks. A Cinema Brand package takes 3 to 4 weeks, depending on our shooting schedule and the complexity of the commercial video edit. 
+                    </p>
+                </li>
+                <li class="cs-faq-item">
+                    <button class="cs-button">
+                        <span class="cs-number">9</span>
+                        <span class="cs-button-text">
+                            How do I request edits to my site?
+                        </span>
+                    </button>
+                    <p class="cs-item-p">
+                        Digital Foundation clients simply text or email us with updates (like changing team members, swapping photos, or updating hours), and we handle the code changes for you as part of your unlimited minor edits. Cinema Brand clients can request custom development or layout changes billed at our standard $50/hr agency rate.
+                    </p>
+                </li>
+                <li class="cs-faq-item">
+                    <button class="cs-button">
+                        <span class="cs-number">10</span>
+                        <span class="cs-button-text">
+                            What if I need an online store or ecommerce?
+                        </span>
+                    </button>
+                    <p class="cs-item-p">
+                        Ecommerce requires complex inventory and payment routing. We handle ecommerce builds through our Custom Enterprise tier, where we architect headless stores or heavily customized Shopify platforms. Book a call with us to scope out the exact requirements for your inventory.
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+{% include 'sections/cta.html' %}
+{% endblock %}
