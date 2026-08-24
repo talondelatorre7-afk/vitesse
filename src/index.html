@@ -1,6 +1,6 @@
 ---
-title: "Deep Sea Digital | Cinema-Grade Web Design | Chino Hills, CA"
-description: "We build high performance, cinema grade websites for local businesses. Unfair digital advantages, sub second speed, and premium video production in one package."
+title: "VITESSE | Automotive Visual Production Studio"
+description: "High-performance vehicle-to-vehicle tracking and commercial cinematography based in Southern California."
 permalink: "/"
 tags: "sitemap"
 ---
@@ -12,64 +12,88 @@ tags: "sitemap"
 
     {% if client.isProduction %}
         <link rel="preload" href="/assets/css/local.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript>
-            <link rel="stylesheet" href="/assets/css/local.css">
-        </noscript>
+        <noscript><link rel="stylesheet" href="/assets/css/local.css"></noscript>
     {% else %}
         <link rel="stylesheet" href="/assets/css/local.css" />
     {% endif %}
 
     <style>
-        /* This ensures the video looks perfect right inside this file */
-        #hero-143 .cs-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            z-index: -1;
-            overflow: hidden;
+        /* NUKING THE BASE TEMPLATE OVERRIDES & ANGLES */
+        #hero-143 {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding: 0 1rem;
+            clip-path: none !important; /* Forces the angle cut to break */
+            border: none !important;
+            margin: 0 !important;
+        }
+        /* Absolutely destroying any CodeStitch before/after artifacts on the hero */
+        #hero-143:before, 
+        #hero-143:after,
+        #hero-143 .cs-background:after {
+            display: none !important;
+            background: none !important;
         }
 
-        #hero-143 .cs-background::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.5); /* 50% dark overlay to make text pop */
-            z-index: 1;
-        }
+        #hero-143 .cs-title { color: #fff; margin: 0 auto 1.5rem auto; font-size: clamp(3rem, 8vw, 6.5rem); }
+        #hero-143 .cs-text { color: #e5e5e5; font-size: 1.25rem; margin: 0 auto 2.5rem auto; }
+        #hero-143 .cs-background { position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: -1; background: #000; overflow: hidden;}
+        #hero-143 .cs-background::before { content: ''; position: absolute; top: 0; left: 0; height: 100%; width: 100%; background: rgba(0, 0, 0, 0.4); z-index: 1; display: block !important;}
+        #hero-video { width: 100%; height: 100%; object-fit: cover; }
 
-        #hero-video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+        /* DIRECTORS STATEMENT */
+        #vitesse-statement { padding: var(--sectionPadding); background: #000; text-align: center; border-bottom: 1px solid #111; }
+        #vitesse-statement .cs-container { max-width: 60rem; margin: 0 auto; }
+        #vitesse-statement .cs-title { font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.1; margin-bottom: 2rem;}
+        #vitesse-statement .cs-text { font-size: 1.125rem; color: #aaa; margin: 0 auto; max-width: 50rem; line-height: 1.6;}
+
+        /* BRUTALIST SERVICE GRID */
+        #vitesse-services { background-color: #050505; border-bottom: 1px solid #111; }
+        .v-service-grid { display: grid; grid-template-columns: 1fr; width: 100%; margin: 0; padding: 0; list-style: none; }
+        @media (min-width: 64rem) { .v-service-grid { grid-template-columns: repeat(3, 1fr); } }
+        .v-service-item { padding: clamp(3rem, 8vw, 6rem) clamp(2rem, 5vw, 4rem); border-bottom: 1px solid #111; display: flex; flex-direction: column; justify-content: space-between; min-height: 400px; }
+        @media (min-width: 64rem) { .v-service-item { border-bottom: none; border-right: 1px solid #111; } .v-service-item:last-child { border-right: none; } }
+        .v-service-number { font-family: var(--headerFont); font-size: 2.5rem; color: #222; margin-bottom: 2rem; }
+        .v-service-title { font-family: var(--headerFont); font-size: 1.5rem; text-transform: uppercase; margin: 0 0 1rem 0; color: #fff; }
+        .v-service-text { color: #aaa; font-size: 1rem; line-height: 1.6; }
+
+        /* RIG HIGHLIGHT (CLEAN TEXT) */
+        #vitesse-gear { padding: var(--sectionPadding); background: #000; }
+        .v-gear-container { max-width: 90rem; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 4rem; align-items: center; }
+        @media (min-width: 64rem) { .v-gear-container { grid-template-columns: 1fr 1fr; } }
+        .v-gear-image { width: 100%; height: auto; aspect-ratio: 4/5; object-fit: cover; filter: grayscale(100%); }
+        .v-gear-list { list-style: none; padding: 0; margin: 3rem 0 0 0; border-top: 1px solid #333; }
+        .v-gear-list li { padding: 1.5rem 0; border-bottom: 1px solid #222; display: flex; justify-content: space-between; font-family: var(--headerFont); text-transform: uppercase; font-weight: 700; font-size: 1rem; color: #fff; letter-spacing: 0.1em;}
+        .v-gear-list span { color: #888; font-family: var(--bodyFont); font-weight: 400; text-transform: none; letter-spacing: 0;}
+
+        /* COLOR PIPELINE */
+        #color-pipeline { padding: var(--sectionPadding); background: #050505; }
+        .pipeline-container { max-width: 80rem; margin: 3rem auto 0 auto; border: 1px solid #222; }
+        .pipeline-img-box { position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; background: #000;}
+        .pipeline-img-box img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.4s ease; }
+        .pipeline-img-box img.cs-active { opacity: 1; z-index: 2; }
+        .pipeline-controls { display: flex; border-top: 1px solid #222; }
+        .pipeline-btn { flex: 1; padding: 1.5rem; background: #000; border: none; color: #555; font-family: var(--headerFont); text-transform: uppercase; cursor: pointer; transition: all 0.3s; letter-spacing: 0.1em;}
+        .pipeline-btn.cs-active { color: #fff; background: #111; }
+        .pipeline-btn:first-child { border-right: 1px solid #222; }
     </style>
 {% endblock %}
 
 {% block body %}
-<!-- ============================================ -->
-<!--              UNIVERSAL SPACER                -->
-<!-- ============================================ -->
-<div style="margin-top: 0.5rem; margin-bottom: 0rem; position: relative; z-index: 10;">
-</div>
+    <!-- HERO SECTION -->
     <section id="hero-143">
         <div class="cs-container">
-            <span class="cs-topper">Now Serving Chino Hills</span>
-            <h1 class="cs-title">
-                Cinema Grade Websites. <br> Built to Convert.
-            </h1>
-            <p class="cs-text">
-                Most websites are slow and outdated. We build high performance platforms that combine premium video production with lightning-fast load speeds. Get a world class digital presence starting at just $197/mo.
-            </p>
+            <span class="cs-topper">Visual Production Studio</span>
+            <h1 class="cs-title">Chasing The Apex</h1>
+            <p class="cs-text">High-end automotive cinematography. Based in Southern California.</p>
             <div class="cs-button-group">
-                <a href="/contact/" class="cs-button-solid">Get Started Today</a>
+                <a href="/portfolio/" class="cs-button-solid">View The Archive</a>
             </div>
-</div>
-
+        </div>
         <div class="cs-background">
             <video autoplay muted loop playsinline id="hero-video">
                 <source src="/assets/images/hero-main.mp4" type="video/mp4">
@@ -77,343 +101,103 @@ tags: "sitemap"
         </div>
     </section>
 
-    <section id="h-services-143">
-        <ul class="cs-card-group">
-            <li class="cs-item">
-                <picture class="cs-icon">
-                    <img loading="lazy" decoding="async" src="/assets/svgs/s1.svg" alt="icon" width="52" height="52" aria-hidden="true">
-                </picture>
-                <h2 class="cs-title">Our Model</h2>
-                <p class="cs-text">
-                    Stop paying thousands upfront. Get a custom hand coded website for $175/mo with $0 down. *Please note that professional media packages are priced separately*
-                </p>
-            </li>
-            <li class="cs-item">
-                <picture class="cs-icon">
-                    <img loading="lazy" decoding="async" src="/assets/svgs/camera.svg" alt="icon" width="52" height="52" aria-hidden="true">
-                </picture>
-                <h2 class="cs-title">Premium Media</h2>
-                <p class="cs-text">
-                    We use professional cinema cameras to capture your business in 4K. Available as a standalone production package or as a premium add-on for your website.
-                </p>
-            </li>
-            <li class="cs-item">
-                <picture class="cs-icon">
-                    <img loading="lazy" decoding="async" src="/assets/svgs/s3.svg" alt="icon" width="52" height="52" aria-hidden="true">
-                </picture>
-                <h2 class="cs-title">Speed & SEO</h2>
-                <p class="cs-text">
-                    Our sites load in under 1 second. No bloated builders, just clean code that keeps customers engaged and boosts your organic Google rankings.
-                </p>
-            </li>
-            <li class="cs-item">
-                <picture class="cs-icon">
-                    <img loading="lazy" decoding="async" src="/assets/svgs/s4.svg" alt="icon" width="52" height="52" aria-hidden="true">
-                </picture>
-                <h2 class="cs-title">Direct Support</h2>
-                <p class="cs-text">
-                    Skip the complex dashboards. Text us a copy change or a new photo and our team will have your website updated within 24 hours.
-                </p>
-            </li>
-        </ul>
-    </section>
-
-<!-- ============================================ -->
-<!--              UNIVERSAL SPACER                -->
-<!-- ============================================ -->
-<div style="margin-top: -2.5rem; margin-bottom: 0rem; position: relative; z-index: 10;">
-</div>
-    <section id="RPsbs-313">
+    <!-- DIRECTORS STATEMENT -->
+    <section id="vitesse-statement">
         <div class="cs-container">
-            <div class="cs-image-group">
-                <picture class="cs-picture cs-picture1">
-                    <img src="/assets/images/chino2.webp" alt="Professional Filming" width="522" height="581" loading="lazy">
-                </picture>
-                <picture class="cs-picture cs-picture2">
-                    <img src="/assets/images/valk1.webp" alt="Web Development" width="390" height="376" loading="lazy">
-                </picture>
-            </div>
-            <div class="cs-content">
-                <span class="cs-topper">About the Agency</span>
-                <h2 class="cs-title">Bridging the Gap Between Cinema and Code</h2>
-                <p class="cs-text">
-                    Deep Sea Digital was founded in Chino to solve a major problem: most web designers can't film, and most videographers can't code. We do both.
-                </p>
-                <div class="cs-quote">
-                    <span class="cs-quote-text">
-                        "Your website is your digital storefront. If it looks cheap or runs slow, you're telling your customers you don't care about the details."
-                    </span>
-                    <span class="cs-name">Talon De La Torre</span>
-                    <span class="cs-job">Founder, Deep Sea Digital</span>
-                </div>
-                <a href="/about/" class="cs-button-solid">Learn Our Process</a>
-            </div>
-        </div>
-    </section>
-
-<!-- ============================================ -->
-<!--              UNIVERSAL SPACER                -->
-<!-- ============================================ -->
-<div style="margin-top: -4.5rem; margin-bottom: 0rem; position: relative; z-index: 10;">
-</div>
-
-
-<!-- ============================================ -->
-<!--                  Services                    -->
-<!-- ============================================ -->
-<section id="services-296">
-    <div class="cs-container">
-        <div class="cs-content">
-            <span class="cs-topper">What We Do</span>
-            <h2 class="cs-title">Your website - completely stress free</h2>
+            <span class="cs-topper">The Mission</span>
+            <h2 class="cs-title">Bridging Machine and Media</h2>
             <p class="cs-text">
-                At Deep Sea Digital, we build hand coded websites for North American small businesses. No messy templates, just streamlined code that ranks high on Google and converts visitors into revenue. We fully manage your site edits so you can focus on running your business. We don't just launch websites; we anchor long term partnerships to help your business scale and navigate the digital landscape.
+                VITESSE was founded to solve a critical issue in automotive media: capturing raw momentum without sacrificing cinematic fidelity. We don't just point a camera out the window—we bolt heavy metal to heavy metal, engineering visual experiences that match the precision of the machines we film.
             </p>
         </div>
-        <ul class="cs-card-group">
-            <li class="cs-item">
-                <a class="cs-link" href="/web-design/">
-                    <img class="cs-icon" src="assets/svgs/phone.svg" alt="icon" width="" height="" loading="lazy" decoding="async" aria-hidden="true">
-                    <h3 class="cs-h3">MOBILE FIRST DESIGN</h3>
-                    <p class="cs-item-text">
-                        We design and develop with speed & responsiveness in mind, ensuring a seamless experience across phones, tablets, and desktop.
+    </section>
+
+    <!-- BRUTALIST SERVICE GRID -->
+    <section id="vitesse-services">
+        <ul class="v-service-grid">
+            <li class="v-service-item">
+                <div class="v-service-number">01</div>
+                <div>
+                    <h2 class="v-service-title">High-Speed Tracking</h2>
+                    <p class="v-service-text">
+                        Vehicle-to-vehicle tracking utilizing mechanical damping systems to capture perfectly smooth, high-speed rollers and intense pursuit angles.
                     </p>
-                </a>
-                <picture class="cs-image"  aria-hidden="true">
-                    <source media="(max-width: 600px)" srcset="assets/images/ocfloor.webp">
-                    <source media="(min-width: 601px)" srcset="assets/images/ocfloor.webp">
-                    <img loading="lazy" decoding="async" src="assets/images/ocfloor.webp" alt="library" width="413" height="266">
-                </picture>
+                </div>
             </li>
-            <li class="cs-item">
-                <a href="/web-design/" class="cs-link">
-                    <img class="cs-icon" src="/assets/svgs/speed1.svg" alt="icon" width="" height="" loading="lazy" decoding="async" aria-hidden="true">
-                    <h3 class="cs-h3">OPTIMIZED PAGE SPEED</h3>
-                    <p class="cs-item-text">
-                        If your site takes over 3 seconds to load you can lose up to 50% of your traffic because it took too long. Deep Sea's hand-coded sites load in 1 second or less.
+            <li class="v-service-item">
+                <div class="v-service-number">02</div>
+                <div>
+                    <h2 class="v-service-title">Commercial Media</h2>
+                    <p class="v-service-text">
+                        From static architectural lighting to dynamic motion, we craft uncompromising visual campaigns for hypercars, exotics, and bespoke builds.
                     </p>
-                </a>
-                <picture class="cs-image"  aria-hidden="true">
-                    <source media="(max-width: 600px)" srcset="assets/images/ocfloor.webp">
-                    <source media="(min-width: 601px)" srcset="assets/images/ocfloor.webp">
-                    <img loading="lazy" decoding="async" src="assets/images/ocfloor.webp" alt="library" width="413" height="266">
-                </picture>
+                </div>
             </li>
-            <li class="cs-item">
-                <a href="/web-design/" class="cs-link">
-                    <img class="cs-icon" src="/assets/svgs/laptop2.svg" alt="icon" width="" height="" loading="lazy" decoding="async" aria-hidden="true">
-                    <h3 class="cs-h3">FULLY RESPONSIVE</h3>
-                    <p class="cs-item-text">
-                        Your website will fit all screen sizes and devices perfectly, from the smallest smartphones to large desktop monitors, ensuring a seamless user experience for every visitor.
+            <li class="v-service-item">
+                <div class="v-service-number">03</div>
+                <div>
+                    <h2 class="v-service-title">Post-Production</h2>
+                    <p class="v-service-text">
+                        Rigorous editing and color grading pipelines utilizing DaVinci Resolve to extract maximum dynamic range and heavy, cinematic tones.
                     </p>
-                </a>
-                <picture class="cs-image"  aria-hidden="true">
-                    <source media="(max-width: 600px)" srcset="assets/images/ocfloor.webp">
-                    <source media="(min-width: 601px)" srcset="assets/images/ocfloor.webp">
-                    <img loading="lazy" decoding="async" src="assets/images/ocfloor.webp" alt="library" width="413" height="266">
-                </picture>
-            </li>
-            <li class="cs-item">
-                <a class="cs-link" href="/web-design/">
-                    <img class="cs-icon" src="assets/svgs/USA.svg" alt="icon" width="" height="" loading="lazy" decoding="async" aria-hidden="true">
-                    <h3 class="cs-h3">BASED IN THE USA</h3>
-                    <p class="cs-item-text">
-                        We do not hire cheap overseas developers. Our entire team is based in the USA, specifically WA and CA, and we pride ourselves on providing direct, personalized support to all of our clients.
-                    </p>
-                </a>
-                <picture class="cs-image">
-                    <source media="(max-width: 600px)" srcset="assets/images/ocfloor.webp">
-                    <source media="(min-width: 601px)" srcset="assets/images/ocfloor.webp">
-                    <img loading="lazy" decoding="async" src="assets/images/ocfloor.webp" alt="library" width="413" height="266" aria-hidden="true">
-                </picture>
+                </div>
             </li>
         </ul>
-    </div>
-</section>
+    </section>
 
-<!-- ============================================ -->
-<!--     DEEP SEA DIGITAL: DEL RECORDS CASE STUDY -->
-<!-- ============================================ -->
-<section id="del-case-study">
-    <div class="cs-container">
+    <!-- RIG HIGHLIGHT -->
+    <section id="vitesse-gear">
+        <div class="v-gear-container">
+            <div class="v-gear-content">
+                <span class="cs-topper">The Pursuit Rig</span>
+                <h2 class="cs-title">Engineered For Momentum</h2>
+                <p class="cs-text">
+                    Our production rig is built to stabilize heavy 10-bit cinema cameras at highway speeds, guaranteeing flawless footage regardless of the conditions.
+                </p>
+                <ul class="v-gear-list">
+                    <li>Camera <span>Canon EOS R5 C (XF-AVC)</span></li>
+                    <li>Lenses <span>Canon RF 24-70mm</span></li>
+                    <li>Mount <span>Tilta Hydra Alien Pro</span></li>
+                    <li>Chase Vehicle <span>GMC Canyon Elevation</span></li>
+                </ul>
+            </div>
+            <!-- Swap image with a wide shot of the truck/rig -->
+            <img class="v-gear-image" src="/assets/images/chino2.webp" alt="Tracking Rig Setup" loading="lazy">
+        </div>
+    </section>
+
+    <!-- COLOR PIPELINE -->
+    <section id="color-pipeline">
+        <div class="cs-container" style="max-width: 60rem; margin: 0 auto; text-align: center;">
+            <span class="cs-topper">The Pipeline</span>
+            <h2 class="cs-title" style="margin-bottom: 1.5rem;">Precision Grade</h2>
+            <p class="cs-text" style="margin: 0 auto;">Shooting the footage is only half the battle. We run a heavy-duty DaVinci Resolve workflow, pushing 10-bit XF-AVC files to achieve a flawless, cinematic aesthetic.</p>
+        </div>
         
-        <!-- Header & Intro -->
-        <div class="cs-content">
-            <span class="cs-topper">Featured Enterprise Build</span>
-            <h2 class="cs-title">DEL Records Concept Architecture</h2>
-            <p class="cs-text">
-                We engineered a complete speculative redesign for one of the largest independent record labels in the world. We stripped away their sluggish AI site builder and replaced it with a hand-coded, serverless architecture that automates their data pipelines and guarantees sub-second load times.
-            </p>
-            <div class="cs-button-group">
-                <a href="https://del-records.talondelatorre7.workers.dev" target="_blank" rel="noopener" class="cs-button-solid">View Live Redesign</a>
-                <a href="/portfolio/del-records/" class="cs-button-outline">Read Full Case Study</a>
+        <div class="pipeline-container">
+            <div class="pipeline-img-box">
+                <img class="cs-img-new cs-active" src="/assets/images/with grade.webp" alt="Final Grade" loading="lazy">
+                <img class="cs-img-old" src="/assets/images/RAW.webp" alt="Raw Log Format" loading="lazy">
             </div>
-        </div>
-
-        <!-- The PageSpeed Compare VIP Section (Shrunk and Side-by-Side) -->
-        <div class="cs-pagespeed-wrapper">
-            <div class="cs-score-card">
-                <div class="cs-score-label" style="background: rgba(220, 38, 38, 0.1); color: #dc2626;">Old AI Builder (PageSpeed: 43)</div>
-                <img src="/assets/images/43.webp" alt="Old Site Performance 43" loading="lazy">
+            <div class="pipeline-controls">
+                <button class="pipeline-btn cs-active" onclick="toggleColor(this, 'new')">Final Output</button>
+                <button class="pipeline-btn" onclick="toggleColor(this, 'old')">Raw XF-AVC Log</button>
             </div>
-            <div class="cs-score-card">
-                <div class="cs-score-label" style="background: rgba(22, 163, 74, 0.1); color: #16a34a;">Deep Sea Hand-Coded (PageSpeed: 92)</div>
-                <img src="/assets/images/92.webp" alt="New Site Performance 92" loading="lazy">
-            </div>
-        </div>
-
-        <!-- The 3-Column Features Grid with Interactive Toggles -->
-        <div class="cs-grid">
-            
-            <!-- Card 1 -->
-            <div class="cs-card">
-                <div class="cs-card-img-box">
-                    <img class="cs-img-new cs-active" src="/assets/images/obvious lander fixed to much more pleasing uncomplicated lander.webp" alt="New Design" loading="lazy">
-                    <!-- DROP YOUR OLD IMAGE HERE -->
-                    <img class="cs-img-old" src="/assets/images/obvious%20vibecoded%20home%20page%20lander.webp" alt="Old Design" loading="lazy">
-                </div>
-                <div class="cs-toggle-wrapper">
-                    <button class="cs-toggle-btn cs-active" onclick="toggleDesign(this, 'new')">Updated Design</button>
-                    <button class="cs-toggle-btn" onclick="toggleDesign(this, 'old')">Old Design</button>
-                </div>
-                <div class="cs-info">
-                    <h3 class="cs-h3">Cinematic UI/UX</h3>
-                    <p class="cs-item-text">We replaced confusing layouts with a premium, conversion-focused user interface and strict visual hierarchy.</p>
-                </div>
-            </div>
-            
-            <!-- Card 2 -->
-            <div class="cs-card">
-                <div class="cs-card-img-box">
-                    <img class="cs-img-new cs-active" src="/assets/images/latest%20videos%20updated%20everyday%20and%20grid%20with%20top%203%20newest%20bottom%203%20most%20viewed.webp" alt="New Design" loading="lazy">
-                    <!-- DROP YOUR OLD IMAGE HERE -->
-                    <img class="cs-img-old" src="/assets/images/latest videos covered by play button and not updating.webp" alt="Old Design" loading="lazy">
-                </div>
-                <div class="cs-toggle-wrapper">
-                    <button class="cs-toggle-btn cs-active" onclick="toggleDesign(this, 'new')">Updated Design</button>
-                    <button class="cs-toggle-btn" onclick="toggleDesign(this, 'old')">Old Design</button>
-                </div>
-                <div class="cs-info">
-                    <h3 class="cs-h3">Dynamic Video Syncing</h3>
-                    <p class="cs-item-text">Build-time scripts bypass walls to fetch and inject the newest drops directly from the YouTube channel.</p>
-                </div>
-            </div>
-            
-            <!-- Card 3 -->
-            <div class="cs-card">
-                <div class="cs-card-img-box">
-                    <img class="cs-img-new cs-active" src="/assets/images/Artists%20hardcoded%20with%20daily%20updates%20that%20sort%20EVERY%20artist%20by%20size%20from%20highest%20to%20lowest%20monthly%20listeners%20reflecting%20the%20days%20accurate%20metrics.webp" alt="New Design" loading="lazy">
-                    <!-- DROP YOUR OLD IMAGE HERE -->
-                    <img class="cs-img-old" src="/assets/images/artists hardcoded and stats not updated.webp" alt="Old Design" loading="lazy">
-                </div>
-                <div class="cs-toggle-wrapper">
-                    <button class="cs-toggle-btn cs-active" onclick="toggleDesign(this, 'new')">Updated Design</button>
-                    <button class="cs-toggle-btn" onclick="toggleDesign(this, 'old')">Old Design</button>
-                </div>
-                <div class="cs-info">
-                    <h3 class="cs-h3">Zero-Maintenance Data</h3>
-                    <p class="cs-item-text">GitHub Actions ping Spotify's API every afternoon to scrape fresh data and automatically re-rank the roster.</p>
-                </div>
-            </div>
-            
-            <!-- Card 4 -->
-            <div class="cs-card">
-                <div class="cs-card-img-box">
-                    <img class="cs-img-new cs-active" src="/assets/images/custom%20new%20form%20sections%20when%20demo%20is%20clicked%20in%20contact%20page.webp" alt="New Design" loading="lazy">
-                </div>
-                <div class="cs-info">
-                    <h3 class="cs-h3">Advanced Form Routing</h3>
-                    <p class="cs-item-text">Dynamic inquiry forms adapt based on user selection, streamlining internal A&R and booking communication.</p>
-                </div>
-            </div>
-            
-            <!-- Card 5 -->
-            <div class="cs-card">
-                <div class="cs-card-img-box">
-                    <img class="cs-img-new cs-active" src="/assets/images/about%20page%20fixed%20to%20dynamic%20info%20page%20talking%20about%20the%20past-present-and%20future.webp" alt="New Design" loading="lazy">
-                    <!-- DROP YOUR OLD IMAGE HERE -->
-                    <img class="cs-img-old" src="/assets/images/Aout page only scrolls to quick text of home page.webp" alt="Old Design" loading="lazy">
-                </div>
-                <div class="cs-toggle-wrapper">
-                    <button class="cs-toggle-btn cs-active" onclick="toggleDesign(this, 'new')">Updated Design</button>
-                    <button class="cs-toggle-btn" onclick="toggleDesign(this, 'old')">Old Design</button>
-                </div>
-                <div class="cs-info">
-                    <h3 class="cs-h3">Dynamic Content Pages</h3>
-                    <p class="cs-item-text">Overhauled static text blocks into engaging, data-driven company timelines and interactive historical roadmaps.</p>
-                </div>
-            </div>
-            
-            <!-- Card 6 -->
-            <div class="cs-card">
-                <div class="cs-card-img-box">
-                    <img class="cs-img-new cs-active" src="/assets/images/artifact%20replaced%20with%20infrastrucutre%20section.webp" alt="New Design" loading="lazy">
-                    <!-- DROP YOUR OLD IMAGE HERE -->
-                    <img class="cs-img-old" src="/assets/images/artifact not loaded in.webp" alt="Old Design" loading="lazy">
-                </div>
-                <div class="cs-toggle-wrapper">
-                    <button class="cs-toggle-btn cs-active" onclick="toggleDesign(this, 'new')">Updated Design</button>
-                    <button class="cs-toggle-btn" onclick="toggleDesign(this, 'old')">Old Design</button>
-                </div>
-                <div class="cs-info">
-                    <h3 class="cs-h3">Flawless Infrastructure</h3>
-                    <p class="cs-item-text">Eliminated broken template artifacts and empty data voids, replacing them with a bulletproof HTML structure.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- ============================================ -->
-
-<!-- ============================================ -->
-<!--              UNIVERSAL SPACER                -->
-<!-- ============================================ -->
-<div style="margin-top: -5rem; margin-bottom: 0rem; position: relative; z-index: 10;">
-</div>
-                                
-<!-- ============================================ -->
-<!--              UNIVERSAL SPACER                -->
-<!-- ============================================ -->
-<div style="margin-top: -5rem; margin-bottom: 0rem; position: relative; z-index: 10;">
-</div>
-
-    <section id="gallery-48">
-        <div class="cs-container">
-            <div class="cs-content">
-                <span class="cs-topper">Visual Portfolio</span>
-                <h2 class="cs-title">Showcasing Our Work</h2>
-            </div>
-            <div class="cs-image-group">
-                <div class="cs-row cs-row-1">
-                    <picture class="cs-picture cs-picture-1"><img src="/assets/images/goofysmoke.webp" alt="work" width="413" height="567" loading="lazy"></picture>
-                    <picture class="cs-picture cs-picture-2"><img src="/assets/images/08.webp" alt="work" width="413" height="629" loading="lazy"></picture>
-                    <picture class="cs-picture cs-picture-3"><img src="/assets/images/stradsf.webp" alt="work" width="413" height="512" loading="lazy"></picture>
-                </div>
-            </div>
-            <a href="/contact/" class="cs-button-solid">Contact Us</a>
         </div>
     </section>
 
-    <div style="margin-top: 0rem; margin-bottom: -1rem; position: relative; z-index: 10;">    
-    </div>
-                                
-<!-- ============================================ -->
     {% include 'sections/cta.html' %}
 
-    <!-- JavaScript for Before/After Toggle in DEL Case Study -->
     <script>
-        function toggleDesign(btn, state) {
-            const card = btn.closest('.cs-card');
-            const btns = card.querySelectorAll('.cs-toggle-btn');
-            const imgNew = card.querySelector('.cs-img-new');
-            const imgOld = card.querySelector('.cs-img-old');
+        function toggleColor(btn, state) {
+            const container = btn.closest('.pipeline-container');
+            const btns = container.querySelectorAll('.pipeline-btn');
+            const imgNew = container.querySelector('.cs-img-new');
+            const imgOld = container.querySelector('.cs-img-old');
 
-            // Remove active class from all buttons in this specific card
             btns.forEach(b => b.classList.remove('cs-active'));
-            // Add active class to the clicked button
             btn.classList.add('cs-active');
 
-            // Fade images based on state
             if (state === 'new') {
                 imgNew.classList.add('cs-active');
                 imgOld.classList.remove('cs-active');

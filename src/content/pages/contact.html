@@ -1,6 +1,6 @@
 ---
-title: "Get Your Free Media Audit | Deep Sea Digital"
-description: "Ready to scale your business with cinema-grade visuals and a high-performance website? Contact us at Deep Sea Digital today."
+title: "Book a Shoot | VITESSE"
+description: "Contact Vitesse to schedule your next high-performance visual production in Southern California."
 permalink: "/contact/"
 ---
 
@@ -9,185 +9,314 @@ permalink: "/contact/"
 {% block head %}
     <link rel="stylesheet" href="/assets/css/contact.css">
     <style>
-        /* Forces the SMS opt-in to span the full width of the form grid */
-        .opt-in-wrapper {
-            grid-column: 1 / -1 !important;
-            width: 100% !important;
-            max-width: none !important;
-            margin-top: -0.75rem !important; 
-            margin-bottom: 1.5rem !important;
+        /* ============================================ */
+        /*              PAGE OVERRIDES                  */
+        /* ============================================ */
+        body { background: #000; }
+        
+        /* CONTACT SECTION STYLING */
+        #cs-contact-265 { 
+            background: #000; 
+            color: #fff; 
+            /* Fluid padding: smaller on mobile, larger on desktop to clear header */
+            padding-top: clamp(8rem, 15vw, 12rem);
+            padding-bottom: var(--sectionPadding);
+            padding-left: 1rem;
+            padding-right: 1rem;
         }
 
-        /* Overrides the default vertical stacking of CodeStitch form labels */
-        .opt-in-label {
-            display: flex !important;
-            flex-direction: row !important; 
-            align-items: flex-start !important;
-            gap: 0.75rem !important;
-            font-size: 0.85rem !important;
-            color: #b4b4b4 !important;
-            line-height: 1.5 !important;
-            cursor: pointer !important;
-            width: 100% !important;
-            max-width: none !important;
-            text-align: left !important;
+        #cs-contact-265 .cs-container {
+            display: grid; 
+            grid-template-columns: 1fr; 
+            gap: 4rem; 
+            max-width: 80rem; 
+            margin: auto;
         }
 
-        /* Forces the text itself to stretch out and fill the container on desktop */
-        .opt-in-label span {
-            flex: 1 !important;
-            width: 100% !important;
-            max-width: none !important;
+        @media (min-width: 64rem) {
+            #cs-contact-265 .cs-container { grid-template-columns: 1.5fr 1fr; gap: 6rem; }
         }
 
-        /* Prevents the checkbox from resizing or misaligning */
-        .opt-in-label input[type="checkbox"] {
-            width: 18px !important;
-            height: 18px !important;
-            margin: 2px 0 0 0 !important;
-            flex-shrink: 0 !important;
-            accent-color: var(--primary) !important;
+        #cs-contact-265 .cs-topper {
+            color: #888;
         }
 
-        /* Submission Status Messages */
+        #cs-contact-265 .cs-title { 
+            color: #fff; 
+            margin-bottom: 1.5rem; 
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.1;
+            text-transform: uppercase;
+            font-family: var(--headerFont);
+            letter-spacing: -0.02em;
+        }
+        
+        #cs-contact-265 .cs-text { 
+            color: #aaa; 
+            max-width: 35rem; 
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        /* ============================================ */
+        /*           BRUTALIST FORM STYLING             */
+        /* ============================================ */
+        #cs-form-265 { 
+            display: grid; 
+            grid-template-columns: 1fr; 
+            gap: 1.5rem; 
+        }
+
+        @media (min-width: 48rem) {
+            #cs-form-265 { grid-template-columns: repeat(2, 1fr); gap: 2rem 1.5rem; }
+        }
+        
+        /* Forces these elements to span the full width of the form grid */
+        .cs-label-message, 
+        .opt-in-wrapper, 
+        #submit-btn,
         #form-status {
-            margin-top: 1rem;
-            font-weight: 700;
-            text-align: center;
-            display: none;
+            grid-column: 1 / -1 !important;
+            width: 100%;
         }
-        .status-success { color: #10b981; } /* Green */
-        .status-error { color: #ef4444; }   /* Red */
+        
+        #cs-form-265 label { 
+            color: #fff; 
+            font-family: var(--headerFont);
+            font-weight: 700; 
+            text-transform: uppercase; 
+            font-size: 0.75rem; 
+            letter-spacing: 0.1em; 
+            display: flex;
+            flex-direction: column;
+        }
+
+        #cs-form-265 input, 
+        #cs-form-265 textarea {
+            width: 100%; 
+            padding: 1.25rem; 
+            background: #0a0a0a; 
+            border: 1px solid #222;
+            color: #fff; 
+            margin-top: 0.75rem; 
+            border-radius: 0; 
+            font-family: var(--bodyFont);
+            font-size: 1rem; 
+            transition: border-color 0.3s;
+            box-sizing: border-box;
+            appearance: none;
+        }
+
+        #cs-form-265 input:focus, 
+        #cs-form-265 textarea:focus { 
+            outline: none; 
+            border-color: #fff; 
+        }
+
+        /* SMS OPT-IN FIXES */
+        .opt-in-wrapper { margin-top: 0.5rem; }
+        
+        .opt-in-label { 
+            display: flex !important; 
+            flex-direction: row !important;
+            gap: 1rem !important; 
+            align-items: flex-start !important; 
+            color: #888 !important; 
+            font-family: var(--bodyFont) !important;
+            font-size: 0.875rem !important; 
+            text-transform: none !important; 
+            font-weight: 400 !important; 
+            cursor: pointer; 
+            letter-spacing: 0 !important;
+        }
+
+        .opt-in-label input[type="checkbox"] { 
+            width: 18px !important; 
+            height: 18px !important; 
+            margin: 0.25rem 0 0 0 !important; 
+            flex-shrink: 0;
+            appearance: auto !important;
+        }
+
+        .opt-in-label span {
+            flex: 1;
+            line-height: 1.5;
+        }
+
+        /* SUBMIT BUTTON FIX */
+        #submit-btn {
+            background: #fff;
+            color: #000;
+            border: 1px solid #fff;
+            padding: 1.25rem;
+            text-align: center;
+            font-family: var(--headerFont);
+            font-weight: 800;
+            font-size: 0.875rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #submit-btn:hover {
+            background: #000;
+            color: #fff;
+        }
+
+        /* RIGHT COLUMN (CONTACT INFO) */
+        .cs-right-section { 
+            padding-top: 2rem; 
+            border-top: 1px solid #222; 
+            display: flex;
+            flex-direction: column;
+            gap: 2rem; /* Clean, uniform spacing between blocks */
+        }
+
+        @media (min-width: 64rem) {
+            .cs-right-section { 
+                border-top: none; 
+                border-left: 1px solid #222; 
+                padding-left: 4rem; 
+                padding-top: 0; 
+                justify-content: flex-start;
+            }
+        }
+        
+        .cs-info-block {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cs-header { 
+            font-family: var(--headerFont); 
+            text-transform: uppercase; 
+            color: #555; 
+            display: block; 
+            margin-bottom: 0.75rem; 
+            font-size: 0.875rem; 
+            letter-spacing: 0.1em;
+        }
+        
+        .cs-link { 
+            color: #fff; 
+            text-decoration: none; 
+            font-size: 1.125rem; 
+            line-height: 1.5;
+            transition: color 0.3s;
+        }
+
+        .cs-link:hover { color: #aaa; }
+
+        /* FORM STATUS ALERTS */
+        #form-status { 
+            font-weight: 700; 
+            text-align: center; 
+            display: none; 
+            padding: 1rem;
+            border: 1px solid transparent;
+            font-family: var(--bodyFont);
+        }
+        .status-success { color: #fff; border-color: #10b981 !important; background: rgba(16, 185, 129, 0.1); } 
+        .status-error { color: #fff; border-color: #ef4444 !important; background: rgba(239, 68, 68, 0.1); }   
     </style>
 {% endblock %}
 
 {% block body %}
-
-    <div id="banner-310">
-        <div class="cs-container">
-            <span class="cs-int-title">Start the Revolution</span>
-            <div class="cs-breadcrumbs">
-                <a href="/" class="cs-link">Home</a>
-                <a href="/contact/" class="cs-link cs-active">Contact Us</a>
-            </div>
-        </div>
-        <picture class="cs-background">
-            <img src="/assets/images/ocfloor.webp" alt="Deep Sea" width="1920" height="482" loading="eager" decoding="async">
-        </picture>
-    </div>
-
+    <!-- ============================================ -->
+    <!--                  CONTACT                     -->
+    <!-- ============================================ -->
     <section id="cs-contact-265">
         <div class="cs-container">
             <div class="cs-left-section">
-                <div class="cs-content">
-                    <span class="cs-topper">Contact Us</span>
-                    <h2 class="cs-title">Secure Your Spot</h2>
+                <div class="cs-content" style="margin-bottom: 3rem;">
+                    <span class="cs-topper">Operations</span>
+                    <h2 class="cs-title">Lock In The Pursuit</h2>
                     <p class="cs-text">
-                        We only take on a limited number of clients per month to ensure every site gets the premium video production attention it deserves. Tell us about your business, and we'll reach out to schedule your free 4K media audit.
+                        Tell us about your vehicle, location, and the scope of the production. We will review the logistics and reach out to lock in your shoot dates.
                     </p>
                 </div>
 
-                <!-- Native Cloudflare Pages Form -->
                 <form id="cs-form-265">
+                    <label>
+                        Full Name
+                        <input required type="text" name="name" placeholder="John Doe">
+                    </label>
+                    <label>
+                        Email Address
+                        <input required type="email" name="email" placeholder="name@company.com">
+                    </label>
+                    <label>
+                        Phone Number
+                        <input required type="tel" name="phone" placeholder="(555) 555-5555">
+                    </label>
+                    <label>
+                        Vehicle / Project Type
+                        <input required type="text" name="business-type" placeholder="e.g. Ferrari SF90 Shoot">
+                    </label>
                     
-                    <label>
-                        Name
-                        <input required type="text" id="name-265" name="name" placeholder="Full Name">
-                    </label>
-                    <label>
-                        Email
-                        <input required type="email" id="email-265" name="email" placeholder="Email Address">
-                    </label>
-                    <label>
-                        Phone
-                        <input required type="tel" id="phone-265" name="phone" placeholder="Phone Number">
-                    </label>
-                    <label>
-                        Business Type
-                        <input type="text" id="find-265" name="business-type" placeholder="e.g. Restaurant, Automotive, Real Estate">
-                    </label>
                     <label class="cs-label-message">
-                        What is your main goal? (More leads, better branding, etc.)
-                        <textarea required name="message" id="message-265" placeholder="Tell us about your project..."></textarea>
+                        Project Scope (Rollers, static, location, etc.)
+                        <textarea required name="message" rows="6" placeholder="Tell us exactly what we are shooting..."></textarea>
                     </label>
                     
-                    <!-- SMS Opt-In Checkbox -->
                     <div class="opt-in-wrapper">
                         <label class="opt-in-label">
                             <input type="checkbox" name="SMS_Opt_In" required>
-                            <span>I agree to receive SMS communications from Deep Sea Digital regarding my inquiry. I understand I can reply STOP to opt out at any time. Message and data rates may apply.</span>
+                            <span>I agree to receive SMS communications from Vitesse regarding my inquiry. I understand I can reply STOP to opt out at any time. Message and data rates may apply.</span>
                         </label>
                     </div>
 
-                    <button class="cs-button-solid cs-submit" type="submit" id="submit-btn">Submit My Request</button>
+                    <button type="submit" id="submit-btn">Submit Request</button>
                     <div id="form-status"></div>
                 </form>
             </div>
 
             <div class="cs-right-section">
-                <span class="cs-header">Email</span>
-                <a class="cs-link" href="mailto:{{ client.email }}">{{ client.email }}</a>
+                <div class="cs-info-block">
+                    <span class="cs-header">Direct Line</span>
+                    <a class="cs-link" href="mailto:{{ client.email }}">{{ client.email }}</a>
+                    <a class="cs-link" href="tel:{{ client.phoneForTel }}" style="margin-top: 0.5rem;">{{ client.phoneFormatted }}</a>
+                </div>
                 
-                <span class="cs-header">Text or Call</span>
-                <a class="cs-link" href="tel:{{ client.phoneForTel }}">{{ client.phoneFormatted }}</a>
-                
-                <span class="cs-header">Based In</span>
-                <p class="cs-link">
-                    Chino, California <br>
-                    Serving Chino & Beyond
-                </p>
-                
-                <picture class="cs-bg-picture">
-                    <img src="/assets/images/1234421.webp" alt="Professional Cinema Gear" width="542" height="578" decoding="async">
-                </picture>
+                <div class="cs-info-block">
+                    <span class="cs-header">Headquarters</span>
+                    <p class="cs-link">
+                        Chino, California <br>
+                        Serving Southern California
+                    </p>
+                </div>
+
+                <div class="cs-info-block">
+                    <span class="cs-header">Social</span>
+                    <a class="cs-link" href="https://instagram.com/vitesse.vx" target="_blank" rel="noopener">@vitesse.vx</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Cloudflare Form Submission Logic -->
+    <!-- Form UI Testing Script -->
     <script>
-        document.getElementById('cs-form-265').addEventListener('submit', async function(e) {
-            e.preventDefault(); // Stop the default form submission
-
-            const form = e.target;
+        document.getElementById('cs-form-265').addEventListener('submit', function(e) {
+            e.preventDefault(); 
             const submitBtn = document.getElementById('submit-btn');
             const statusDiv = document.getElementById('form-status');
             
-            // UI Feedback
-            submitBtn.textContent = 'Sending...';
+            submitBtn.textContent = 'Transmitting...';
             submitBtn.disabled = true;
             statusDiv.style.display = 'none';
             statusDiv.className = '';
 
-            // Package the data
-            const formData = new FormData(form);
-            const data = Object.fromEntries(formData.entries());
-
-            try {
-                // Send the data to our Cloudflare Function endpoint
-                const response = await fetch('/api/submit', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
-                });
-
-                if (response.ok) {
-                    statusDiv.textContent = 'Message sent successfully! We will be in touch shortly.';
-                    statusDiv.classList.add('status-success');
-                    form.reset(); // Clear the form
-                } else {
-                    throw new Error('Network response was not ok.');
-                }
-            } catch (error) {
-                console.error('Submission failed:', error);
-                statusDiv.textContent = 'Oops! Something went wrong. Please try emailing us directly.';
-                statusDiv.classList.add('status-error');
-            } finally {
-                // Reset button UI
+            // Simulated network delay
+            setTimeout(() => {
+                statusDiv.textContent = 'Message sent successfully! We will be in touch shortly.';
+                statusDiv.classList.add('status-success');
                 statusDiv.style.display = 'block';
-                submitBtn.textContent = 'Submit My Request';
+                
+                submitBtn.textContent = 'Submit Request';
                 submitBtn.disabled = false;
-            }
+                e.target.reset();
+            }, 1000);
         });
     </script>
 {% endblock %}

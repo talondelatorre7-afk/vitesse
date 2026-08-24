@@ -1,361 +1,235 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// PAGE STYLES
-// Interior pages have their own stylesheet for styles that only exist on
-// that page. Any styles shared between pages, including repeated sections,
-// should go into root.scss
+// VITESSE STUDIO - CONTACT PAGE STYLES
 // ─────────────────────────────────────────────────────────────────────────────
 
-/*-- -------------------------- -->
-<---          Contact           -->
-<--- -------------------------- -*/
-
-/* Mobile - 360px */
 @media only screen and (min-width: 0rem) {
-    #cs-contact-265 {
-        padding: var(--sectionPadding);
+    body { background: #000; }
+    
+    #cs-contact-265 { 
+        background: #000; 
+        color: #fff; 
+        /* Fluid padding: smaller on mobile, larger on desktop to clear header */
+        padding-top: clamp(8rem, 15vw, 12rem);
+        padding-bottom: var(--sectionPadding);
+        padding-left: 1rem;
+        padding-right: 1rem;
 
         .cs-container {
-            width: 100%;
-            /* changes to 1280px at tablet */
-            max-width: calc(550 / 16 * 1rem);
+            display: grid; 
+            grid-template-columns: 1fr; 
+            gap: 4rem; 
+            max-width: 80rem; 
             margin: auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            /* 48px - 64px */
-            gap: clamp(3rem, 6vw, 4rem);
         }
 
-        .cs-content {
-            /* set text align to left if content needs to be left aligned */
-            text-align: left;
-            width: 100%;
-            margin: 0 0 calc(32 / 16 * 1rem) 0;
-            display: flex;
-            flex-direction: column;
-            /* centers content horizontally, set to flex-start to left align */
-            align-items: flex-start;
+        .cs-topper {
+            color: #888;
         }
 
-        #cs-form-265 {
-            label {
-                font-size: calc(16 / 16 * 1rem);
-                line-height: 1.5em;
-                font-weight: 700;
-                /* 12px - 20px */
-                margin-bottom: clamp(0.75rem, 1.3em, 1.25rem);
-                color: var(--headerColor);
+        .cs-title { 
+            color: #fff; 
+            margin-bottom: 1.5rem; 
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.1;
+            text-transform: uppercase;
+            font-family: var(--headerFont);
+            letter-spacing: -0.02em;
+        }
+        
+        .cs-text { 
+            color: #aaa; 
+            max-width: 35rem; 
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        /* ────────────────────────────────────────── */
+        /*           BRUTALIST FORM STYLING           */
+        /* ────────────────────────────────────────── */
+        #cs-form-265 { 
+            display: grid; 
+            grid-template-columns: 1fr; 
+            gap: 1.5rem; 
+            
+            label { 
+                color: #fff; 
+                font-family: var(--headerFont);
+                font-weight: 700; 
+                text-transform: uppercase; 
+                font-size: 0.75rem; 
+                letter-spacing: 0.1em; 
                 display: flex;
-                justify-content: center;
-                align-items: flex-start;
                 flex-direction: column;
+                margin: 0;
             }
 
-            .cs-label-message {
-                /* 32px - 48px */
-                margin-bottom: clamp(2rem, 6.3vw, 3rem);
-            }
-
-            input,
-            textarea {
-                font-size: calc(16 / 16 * 1rem);
-                width: 100%;
-                height: calc(64 / 16 * 1rem);
-                margin-top: calc(4 / 16 * 1rem);
-                padding-left: calc(20 / 16 * 1rem);
-                border: 1px solid #b4b2c7;
-                border-radius: calc(4 / 16 * 1rem);
-                /* prevents border & padding from affecting height */
+            input, textarea {
+                width: 100%; 
+                padding: 1.25rem; 
+                background: #0a0a0a; 
+                border: 1px solid #222;
+                color: #fff; 
+                margin-top: 0.75rem; 
+                border-radius: 0; 
+                font-family: var(--bodyFont);
+                font-size: 1rem; 
+                transition: border-color 0.3s;
                 box-sizing: border-box;
-                transition: border 0.3s;
+                appearance: none;
+                height: auto;
+
+                &:focus { 
+                    outline: none; 
+                    border-color: #fff; 
+                }
+            }
+
+            textarea {
+                min-height: 150px;
+                resize: vertical;
+            }
+
+            /* Forces these elements to span full width */
+            .cs-label-message, 
+            .opt-in-wrapper, 
+            #submit-btn,
+            #form-status {
+                grid-column: 1 / -1 !important;
+                width: 100%;
+            }
+
+            /* SMS OPT-IN */
+            .opt-in-wrapper { margin-top: 0.5rem; }
+            
+            .opt-in-label { 
+                display: flex !important; 
+                flex-direction: row !important;
+                gap: 1rem !important; 
+                align-items: flex-start !important; 
+                color: #888 !important; 
+                font-family: var(--bodyFont) !important;
+                font-size: 0.875rem !important; 
+                text-transform: none !important; 
+                font-weight: 400 !important; 
+                cursor: pointer; 
+                letter-spacing: 0 !important;
+
+                input[type="checkbox"] { 
+                    width: 18px !important; 
+                    height: 18px !important; 
+                    margin: 0.25rem 0 0 0 !important; 
+                    flex-shrink: 0;
+                    appearance: auto !important;
+                    padding: 0;
+                }
+
+                span {
+                    flex: 1;
+                    line-height: 1.5;
+                }
+            }
+
+            /* SUBMIT BUTTON */
+            #submit-btn {
+                background: #fff;
+                color: #000;
+                border: 1px solid #fff;
+                padding: 1.25rem;
+                text-align: center;
+                font-family: var(--headerFont);
+                font-weight: 800;
+                font-size: 0.875rem;
+                letter-spacing: 0.15em;
+                text-transform: uppercase;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                margin: 0;
 
                 &:hover {
-                    border: 1px solid var(--primary);
-                }
-            }
-
-            textarea {
-                font-family: inherit;
-                padding-top: calc(20 / 16 * 1rem);
-                min-height: calc(120 / 16 * 1rem);
-            }
-
-            .cs-button-solid {
-                width: 100%;
-            }
-        }
-
-        .cs-button-solid {
-            font-size: calc(16 / 16 * 1rem);
-            /* 46px - 56px */
-            line-height: clamp(2.875rem, 5.5vw, 3.5rem);
-            text-decoration: none;
-            font-weight: 700;
-            text-align: center;
-            margin: 0;
-            color: #fff;
-            min-width: calc(150 / 16 * 1rem);
-            padding: 0 calc(24 / 16 * 1rem);
-            background-color: var(--primary);
-            border-radius: calc(4 / 16 * 1rem);
-            display: inline-block;
-            position: relative;
-            z-index: 1;
-            /* prevents padding from adding to the width */
-            box-sizing: border-box;
-
-            &:before {
-                content: "";
-                position: absolute;
-                height: 100%;
-                width: 0%;
-                background: #000;
-                opacity: 1;
-                top: 0;
-                left: 0;
-                z-index: -1;
-                border-radius: calc(4 / 16 * 1rem);
-                transition: width 0.3s;
-            }
-
-            &:hover {
-                &:before {
-                    width: 100%;
+                    background: #000;
+                    color: #fff;
                 }
             }
         }
 
-        .cs-submit {
-            width: 100%;
-            border: none;
-            &:hover {
-                cursor: pointer;
-            }
-        }
-
-        .cs-right-section {
-            width: 100%;
-            height: calc(320 / 16 * 1rem);
-            /* 24px - 40px top & bottom */
-            /* 20px - 40px left & right */
-            padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1.25rem, 3vw, 2.5rem);
-            /* prevents padding and border from affecting height and width */
-            box-sizing: border-box;
-            border-radius: calc(4 / 16 * 1rem);
-            /* cuts off corners on img tag */
-            overflow: hidden;
+        /* ────────────────────────────────────────── */
+        /*        RIGHT COLUMN (CONTACT INFO)         */
+        /* ────────────────────────────────────────── */
+        .cs-right-section { 
+            padding-top: 2rem; 
+            border-top: 1px solid #222; 
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            justify-content: flex-end;
-            position: relative;
+            gap: 2rem; 
+            height: auto;
+            border-radius: 0;
         }
-
-        .cs-header {
-            /* 16px - 20px */
-            font-size: clamp(1rem, 3vw, 1.25rem);
-            line-height: 1.2em;
-            font-weight: 700;
-            margin-bottom: calc(8 / 16 * 1rem);
-            color: var(--bodyTextColorWhite);
-            display: block;
-        }
-
-        .cs-link {
-            /* 16px - 20px */
-            font-size: clamp(1rem, 3vw, 1.25rem);
-            line-height: 1.2em;
-            text-decoration: none;
-            margin-bottom: calc(20 / 16 * 1rem);
-            color: var(--bodyTextColorWhite);
-            display: block;
-            position: relative;
-
-            &:before {
-                /* Animated underline */
-                content: "";
-                width: 0%;
-                height: 2px;
-                /* current color of the parent */
-                background: currentColor;
-                opacity: 1;
-                position: absolute;
-                display: block;
-                bottom: calc(-2 / 16 * 1rem);
-                left: 0;
-                transition: width 0.3s;
-            }
-
-            &:hover {
-                &:before {
-                    width: 100%;
-                }
-            }
-
-            &:last-of-type {
-                margin-bottom: 0;
-            }
-        }
-
-        .cs-block {
-            /* sends second address line to the bottom on its own line */
-            display: block;
-        }
-
-        .cs-bg-picture {
-            width: 100%;
-            height: 100%;
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: -1;
-            transition: transform 0.6s;
-
-            &:before {
-                /* background color overlay */
-                content: "";
-                position: absolute;
-                display: block;
-                height: 100%;
-                width: 100%;
-                background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
-                top: 0;
-                left: 0;
-                z-index: 1;
-            }
-
-            img {
-                position: absolute;
-                top: 0;
-                left: 0;
-                height: 100%;
-                width: 100%;
-                /* Makes img tag act as a background image */
-                object-fit: cover;
-            }
-        }
-    }
-}
-
-/* Tablet - 700px */
-@media only screen and (min-width: 43.75rem) {
-    #cs-contact-265 {
-        .cs-container {
-            max-width: calc(1280 / 16 * 1rem);
-        }
-
-        #cs-form-265 {
+        
+        .cs-info-block {
             display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
+            flex-direction: column;
+        }
 
-            label {
-                width: 48%;
-            }
+        .cs-header { 
+            font-family: var(--headerFont); 
+            text-transform: uppercase; 
+            color: #555; 
+            display: block; 
+            margin-bottom: 0.75rem; 
+            font-size: 0.875rem; 
+            letter-spacing: 0.1em;
+        }
+        
+        .cs-link { 
+            color: #fff; 
+            text-decoration: none; 
+            font-size: 1.125rem; 
+            line-height: 1.5;
+            transition: color 0.3s;
+            margin: 0;
+            
+            &:hover { color: #aaa; }
+            &:before { display: none; } /* Kills the old CodeStitch underline */
+        }
 
-            .cs-label-message {
-                width: 100%;
-            }
+        /* FORM STATUS ALERTS */
+        #form-status { 
+            font-weight: 700; 
+            text-align: center; 
+            display: none; 
+            padding: 1rem;
+            border: 1px solid transparent;
+            font-family: var(--bodyFont);
+        }
+        .status-success { color: #fff; border-color: #10b981 !important; background: rgba(16, 185, 129, 0.1); } 
+        .status-error { color: #fff; border-color: #ef4444 !important; background: rgba(239, 68, 68, 0.1); }   
+    }
+}
+
+/* Tablet Layout */
+@media only screen and (min-width: 48rem) {
+    #cs-contact-265 {
+        #cs-form-265 { 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 2rem 1.5rem; 
         }
     }
 }
 
-/* Small Desktop - 1024px */
+/* Desktop Layout */
 @media only screen and (min-width: 64rem) {
     #cs-contact-265 {
-        .cs-container {
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: calc(80 / 16 * 1rem);
+        .cs-container { 
+            grid-template-columns: 1.5fr 1fr; 
+            gap: 6rem; 
+            align-items: start;
         }
-
-        .cs-left-section {
-            max-width: calc(630 / 16 * 1rem);
-        }
-
-        #cs-form-265 {
-            label {
-                width: 100%;
-            }
-        }
-
-        .cs-right-section {
-            /* changes to 578px at 1300px wide */
-            height: calc(686 / 16 * 1rem);
-            width: 40vw;
-            max-width: calc(542 / 16 * 1rem);
-            /* prevents flexbox from squishing it */
-            flex: none;
-
-            &:hover {
-                .cs-bg-picture {
-                    transform: scale(1.1);
-                }
-            }
-        }
-
-        .cs-block {
-            /* goes back to inline so it stays "in line" with the rest of the text */
-            display: inline-block;
-        }
-    }
-}
-
-/* Small Desktop - 1300px */
-@media only screen and (min-width: 81.25rem) {
-    #cs-contact-265 {
-        #cs-form-265 {
-            column-gap: calc(0 / 16 * 1rem);
-            label {
-                width: 48%;
-                max-width: calc(305 / 16 * 1rem);
-            }
-
-            .cs-label-message {
-                max-width: 100%;
-            }
-        }
-
-        .cs-right-section {
-            height: calc(578 / 16 * 1rem);
-        }
-    }
-}
-
-/* Dark Mode */
-@media only screen and (min-width: 0rem) {
-    body.dark-mode {
-        #cs-contact-265 {
-            .cs-text,
-            .cs-title {
-                color: var(--bodyTextColorWhite);
-            }
-
-            #cs-form-265 {
-                label,
-                input,
-                textarea {
-                    background-color: transparent;
-                    color: var(--bodyTextColorWhite);
-
-                    &::placeholder {
-                        /* lighten up the color of the text by 40%*/
-                        filter: brightness(1.4);
-                    }
-                }
-            }
-
-            .cs-bg-picture {
-                background-color: #000;
-
-                img {
-                    /* lets parent background-color bleed through and darken it */
-                    opacity: 0.5;
-                }
-            }
+        .cs-right-section { 
+            border-top: none; 
+            border-left: 1px solid #222; 
+            padding-left: 4rem; 
+            padding-top: 0; 
+            justify-content: flex-start;
         }
     }
 }
